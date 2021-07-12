@@ -6,14 +6,11 @@ const checkboxTheme = document.querySelector('#theme')
 let client = {}
 let currentFilter
 //get stream
-let myVideoStream;
 navigator.mediaDevices.getUserMedia({ video: true, audio: true })
     .then(stream => {
         socket.emit('NewClient')
         video.srcObject = stream
         video.play()
-        
-        //video.play()
 
         filter.addEventListener('change', (event) => {
             currentFilter = event.target.value
@@ -80,37 +77,14 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
             video.play()
             //wait for 1 sec
             setTimeout(() => SendFilter(currentFilter), 1000)
-            
-            video.addEventListener('click', () => {    
-                /*if (video.volume != 0)
+
+            video.addEventListener('click', () => {
+                if (video.volume != 0)
                     video.volume = 0
                 else
-                    video.volume = 1*/
-                /*if(video.getAudioTracks()[0] !=0) video.volume=0
-                else video.volume=1;*/
-                /*const enabled = video.getAudioTracks()[0].enabled;
-                if (enabled) {
-                    video.getAudioTracks()[0].enabled = false;
-                    const html = `<i class="unmute fa fa-microphone-slash"></i>
-                    <span class="unmute">Unmute</span>`;
-                    document.getElementById("muteButton").innerHTML = htm
-                } else {
-                    const html = `<i class="unmute fa fa-microphone-slash"></i>
-                    <span class="unmute">Unmute</span>`;
-                    document.getElementById("muteButton").innerHTML = html;
-                    video.getAudioTracks()[0].enabled = true;
-                }
-                /*    const enabled = video.getAudioTracks()[0].enabled;
-                    if (enabled) {
-                      video.getAudioTracks()[0].enabled = false;
-                      setUnmuteButton();
-                    } else {
-                      setMuteButton();
-                      video.getAudioTracks()[0].enabled = true;
-                    }
-                    */
+                    video.volume = 1
             })
-            
+
         }
 
         function SessionActive() {
@@ -157,7 +131,6 @@ checkboxTheme.addEventListener('click', () => {
 }
 )
 
-
 function CreateDiv() {
     let div = document.createElement('div')
     div.setAttribute('class', "centered")
@@ -167,6 +140,7 @@ function CreateDiv() {
     if (checkboxTheme.checked == true)
         document.querySelector('#muteText').style.color = "#fff"
 }
+
 
 let name;
 let textarea = document.querySelector('#textarea')
