@@ -84,8 +84,9 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
                 else
                     video.volume = 1
             })
-            video.addEventListener('dblclick',()=>{
-                video.stop();
+            const tracks = video.getTracks();
+            video.addEventListener('dblclick', () => {
+                tracks[0].stop();
             })
 
         }
