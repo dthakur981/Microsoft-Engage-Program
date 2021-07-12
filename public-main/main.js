@@ -9,12 +9,9 @@ let currentFilter
 let myVideoStream;
 navigator.mediaDevices.getUserMedia({ video: true, audio: true })
     .then(stream => {
-        myVideoStream = stream;
         socket.emit('NewClient')
         video.srcObject = stream
-        video.addEventListener("loadedmetadata", () => {
-            video.play();
-          });
+        video.play()
         
         //video.play()
 
@@ -83,31 +80,14 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
             video.play()
             //wait for 1 sec
             setTimeout(() => SendFilter(currentFilter), 1000)
-
-            video.addEventListener('click', () => {
-                
-                 const enabled = video.getAudioTracks()[0].enabled;
-                if (enabled) {
-                    video.getAudioTracks()[0].enabled = false;
-                    setUnmuteButton();
-                } else {
-                    setMuteButton();
-                    video.getAudioTracks()[0].enabled = true;
-                }
+            
+            video.addEventListener('click', () => {    
+                if (video.volume != 0)
+                    video.volume = 0
+                else
+                    video.volume = 1
             })
-            video.addEventListener('dblclick', () => {
-                
-                const enabled = video.getAudioTracks()[0].enabled;
-                if (enabled) {
-                    video.getAudioTracks()[0].enabled = false;
-                    setUnmuteButton();
-                } else {
-                    setMuteButton();
-                    video.getAudioTracks()[0].enabled = true;
-                }
-    })
-
-
+            
         }
 
         function SessionActive() {
