@@ -8361,7 +8361,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
                     video.volume = 1*/
                 /*if(video.getAudioTracks()[0] !=0) video.volume=0
                 else video.volume=1;*/
-                const enabled = video.getAudioTracks()[0].enabled;
+                /*const enabled = video.getAudioTracks()[0].enabled;
                 if (enabled) {
                     video.getAudioTracks()[0].enabled = false;
                     const html = `<i class="unmute fa fa-microphone-slash"></i>
