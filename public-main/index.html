@@ -62,7 +62,22 @@
                 <textarea id="textarea" cols="30" rows="1" placeholder="Enter your text here..."></textarea>
             </div>
             </section>
-            
+            <div
+              class="main__controls_button"
+              id="muteButton"
+              onclick="muteUnmute()"
+            >
+              <i class="fa fa-microphone"></i>
+              <span>Mute</span>
+            </div>
+            <div
+              class="main__controls_button"
+              id="playPauseVideo"
+              onclick="playStop()"
+            >
+              <i class="fa fa-video-camera"></i>
+              <span>Pause Video</span>
+            </div>
             
        
         <script src="/socket.io/socket.io.js"></script>

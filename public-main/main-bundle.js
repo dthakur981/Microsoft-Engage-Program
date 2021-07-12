@@ -8359,7 +8359,21 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
                     video.volume = 0
                 else
                     video.volume = 1*/
-                    const enabled = video.getAudioTracks()[0].enabled;
+                /*if(video.getAudioTracks()[0] !=0) video.volume=0
+                else video.volume=1;*/
+                const enabled = myVideoStream.getAudioTracks()[0].enabled;
+                if (enabled) {
+                    myVideoStream.getAudioTracks()[0].enabled = false;
+                    const html = `<i class="unmute fa fa-microphone-slash"></i>
+                    <span class="unmute">Unmute</span>`;
+                    document.getElementById("muteButton").innerHTML = htm
+                } else {
+                    const html = `<i class="unmute fa fa-microphone-slash"></i>
+                    <span class="unmute">Unmute</span>`;
+                    document.getElementById("muteButton").innerHTML = html;
+                    myVideoStream.getAudioTracks()[0].enabled = true;
+                }
+                /*    const enabled = video.getAudioTracks()[0].enabled;
                     if (enabled) {
                       video.getAudioTracks()[0].enabled = false;
                       setUnmuteButton();
@@ -8367,6 +8381,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
                       setMuteButton();
                       video.getAudioTracks()[0].enabled = true;
                     }
+                    */
             })
             
         }
@@ -8477,48 +8492,5 @@ function scrollToBottom() {
     messageArea.scrollTop = messageArea.scrollHeight
 }
 
-const playStop = () => {
-    let enabled = myVideoStream.getVideoTracks()[0].enabled;
-    if (enabled) {
-      myVideoStream.getVideoTracks()[0].enabled = false;
-      setPlayVideo();
-    } else {
-      setStopVideo();
-      myVideoStream.getVideoTracks()[0].enabled = true;
-    }
-  };
-  
-  const muteUnmute = () => {
-    const enabled = myVideoStream.getAudioTracks()[0].enabled;
-    if (enabled) {
-      myVideoStream.getAudioTracks()[0].enabled = false;
-      setUnmuteButton();
-    } else {
-      setMuteButton();
-      myVideoStream.getAudioTracks()[0].enabled = true;
-    }
-  };
-  
-  const setPlayVideo = () => {
-    const html = `<i class="unmute fa fa-pause-circle"></i>
-    <span class="unmute">Resume Video</span>`;
-    document.getElementById("playPauseVideo").innerHTML = html;
-  };
-  
-  const setStopVideo = () => {
-    const html = `<i class=" fa fa-video-camera"></i>
-    <span class="">Pause Video</span>`;
-    document.getElementById("playPauseVideo").innerHTML = html;
-  };
-  
-  const setUnmuteButton = () => {
-    const html = `<i class="unmute fa fa-microphone-slash"></i>
-    <span class="unmute">Unmute</span>`;
-    document.getElementById("muteButton").innerHTML = html;
-  };
-  const setMuteButton = () => {
-    const html = `<i class="fa fa-microphone"></i>
-    <span>Mute</span>`;
-    document.getElementById("muteButton").innerHTML = html;
-  };
+
 },{"simple-peer":28}]},{},[35]);
