@@ -8355,10 +8355,18 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
             setTimeout(() => SendFilter(currentFilter), 1000)
             
             video.addEventListener('click', () => {    
-                if (video.volume != 0)
+                /*if (video.volume != 0)
                     video.volume = 0
                 else
-                    video.volume = 1
+                    video.volume = 1*/
+                    const enabled = video.getAudioTracks()[0].enabled;
+                    if (enabled) {
+                      video.getAudioTracks()[0].enabled = false;
+                      setUnmuteButton();
+                    } else {
+                      setMuteButton();
+                      video.getAudioTracks()[0].enabled = true;
+                    }
             })
             
         }
