@@ -27,11 +27,12 @@ the software(functionality) in every iteration. Every Iteration has sprints, and
 
 
 ## Features.
-1.Functional Mute Audio and Video feature.
+1. Functional Mute Audio and Video feature.
 2. Chat Feature.
 3. User Identification feature.
 4. Light/dark mode theme toggler feature.
 5. Video Theme change feature.
+6. User Identification Feature.
 
 ## Library and Techstack used. 
 1. express
